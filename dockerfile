@@ -1,5 +1,3 @@
-# this is the best example for dockerfile
-
 FROM python:3.12.4-alpine
 WORKDIR /ExampleTelegramBot
 RUN apk upgrade --update && apk add gcc gcompat musl-dev libffi-dev build-base unixodbc-dev unixodbc --no-cache
