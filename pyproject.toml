@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "exampletelegrambot"
+version = "0.1.0"
+description = ""
+authors = ["yarolys <lysov.yaroslav.r@mail.ru>"]
+readme = ""
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pydantic = "^2.10.6"
+aiogram = "^3.18.0"
+sqlalchemy = "^2.0.38"
+alembic = "^1.14.1"
+asyncpg = "^0.30.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

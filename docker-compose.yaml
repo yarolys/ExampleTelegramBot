@@ -1,0 +1,28 @@
+# this is the best example for docker-compose.yaml
+# add inside .env file: !!!POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB!!
+services:
+  exampletelegrambot:
+    env_file: .env
+    build: .
+    restart: always
+    volumes:
+      - /home/yarolys/Programming/ExampleTelegramBot/logs:/app/logs
+    command: sh -c "alembic upgrade head && python3 run.py"
+  exampletelegrambotdb:
+    image: postgres:15
+    restart: always
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - /var/lib/exampletelegrambot/postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      
